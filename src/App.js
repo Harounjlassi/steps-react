@@ -13,10 +13,13 @@ export default function App() {
 
   //const step = 1;
   const handlePrevious = () => {
-    if (step > 1) setStep(step - 1);
+    if (step > 1) setStep((s) => s - 1);
   };
   const handleNext = () => {
-    if (step < 3) setStep(step + 1);
+    if (step < 3) {
+      setStep((s) => s + 1);
+      //setStep((s) => s + 1);
+    }
     //step = step + 1;
 
     //BAD PRACTICE TO UPDATE STATE
@@ -24,8 +27,8 @@ export default function App() {
   };
 
   return (
-    <div>
-      <button className="close" onClick={() => setIsOpen(!isOpen)}>
+    <>
+      <button className="close" onClick={() => setIsOpen((isOpen) => !isOpen)}>
         &times;
       </button>
       {isOpen && (
@@ -56,6 +59,6 @@ export default function App() {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
