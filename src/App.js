@@ -1,10 +1,22 @@
+import { useState } from "react";
+
 const messages = [
   "Learn React ⚛️",
   "Apply for jobs 💼",
   "Invest your new income 🤑",
 ];
 export default function App() {
-  const step = 1;
+  const [step, setStep] = useState(1);
+  //console.log(arr);
+
+  //const step = 1;
+  const handlePrevious = () => {
+    if (step > 1) setStep(step - 1);
+  };
+  const handleNext = () => {
+    if (step < 3) setStep(step + 1);
+  };
+
   return (
     <div className="steps">
       <div className="numbers">
@@ -16,10 +28,17 @@ export default function App() {
         Step {step}: {messages[step - 1]}
       </p>
       <div className="buttons">
-        <button style={{ backgroundColor: "#7950f2", color: "#ffffff" }}>
+        <button
+          style={{ backgroundColor: "#7950f2", color: "#ffffff" }}
+          onClick={handlePrevious}
+          //onMouseEnter={() => alert("TESt")}
+        >
           Previous
         </button>
-        <button style={{ backgroundColor: "#7950f2", color: "#ffffff" }}>
+        <button
+          style={{ backgroundColor: "#7950f2", color: "#ffffff" }}
+          onClick={handleNext}
+        >
           Next
         </button>
       </div>
